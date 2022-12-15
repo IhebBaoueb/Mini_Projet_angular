@@ -1,0 +1,62 @@
+
+   <br>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <form #f="ngForm">
+                        <div class="form-group col-md-6">
+                            <label> Nom </label>
+                            <input type="text" [(ngModel)]="etudiant.nomE" name="nomE"
+                                   class="form-control" required minlength="2" #t="ngModel">
+                            <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+                                <div *ngIf="t.hasError('required')">this field is required</div>
+                                <div *ngIf="t.hasError('minlength')">minlength = 2!</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Prenom</label>
+                            <input type="text" [(ngModel)]="etudiant.prenomE" name="prenomE"
+                                   class="form-control" required minlength="3" #t="ngModel">
+                            <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+                                <div *ngIf="t.hasError('required')">this field is required</div>
+                                <div *ngIf="t.hasError('minlength')">minlength = 3!</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label> Option </label>
+                            <input type="text" [(ngModel)]="etudiant.option" name="option"
+                                   class="form-control" required minlength="3" #t="ngModel">
+                            <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+                                <div *ngIf="t.hasError('required')">this field is required</div>
+                                <div *ngIf="t.hasError('minlength')">minlength = 3!</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label> Note </label>
+                            <input type="number" [(ngModel)]="etudiant.nomE" name="note"
+                                   class="form-control" required minlength="2" #t="ngModel">
+                            <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+                                <div *ngIf="t.hasError('required')">this field is required</div>
+                                <div *ngIf="t.hasError('minlength')">minlength = 2!</div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="" style="padding-left: 10px;">
+                            <button class="btn btn-success" (click)="add()" 
+                             >
+                                {{action}}
+                            </button>
+                            &nbsp;
+                            <button type="reset" class="btn btn-warning">
+                                reset
+                            </button>
+                            &nbsp;
+                            <button class="btn btn-danger" (click)="delete()">delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

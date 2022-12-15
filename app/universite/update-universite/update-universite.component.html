@@ -1,0 +1,108 @@
+<h1>{{action}}Universite</h1>
+<br>
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card ">
+            <div class="card-header card-header-rose card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">mail_outline</i>
+              </div>
+              <h4 class="card-title">Stacked Form</h4>
+            </div>
+            <div class="card-body ">
+              <form [formGroup]="updateUniversite">
+                <div>
+                  <label>Name:* </label>
+                   <input formControlName="nomUniv" type="text" [(ngModel)]="universite.nomUniv"
+                   class="form-control" required minlength="3"
+                   pattern="[A-Za-z]{3,12}$">
+                   <div class="alert alert-danger" *ngIf="updateUniversite.controls['nomUniv'].invalid && updateUniversite.controls['nomUniv'].touched">
+                    <div *ngIf="updateUniversite.controls['nomUniv'].hasError('required')">
+                       this field is required
+                      </div>
+                    <div *ngIf="updateUniversite.controls['nomUniv'].hasError('minlength')">
+                       minlength = 3 !
+                    </div>
+                    <div *ngIf="updateUniversite.controls['nomUniv'].hasError('pattern')">
+                      error pattern
+                   </div>
+                </div>
+                <div>
+                  <label>Region:* </label>
+                   <input  formControlName="region"type="text" [(ngModel)]="universite.region"
+                   class="form-control" required minlength="3"
+                   pattern="[A-Za-z]{3,12}$">
+                   <div class="alert alert-danger" *ngIf="updateUniversite.controls['region'].invalid && updateUniversite.controls['region'].touched">
+                    <div *ngIf="updateUniversite.controls['region'].hasError('required')">
+                       this field is required
+                      </div>
+                    <div *ngIf="updateUniversite.controls['region'].hasError('minlength')">
+                       minlength = 3 !
+                    </div>
+                    <div *ngIf="updateUniversite.controls['region'].hasError('pattern')">
+                      error pattern
+                   </div>
+                </div>
+
+           
+                  <label>Adresse:*</label>
+                  <input formControlName="adresse" type="text" 
+                  [(ngModel)]="universite.adresse"class="form-control"
+                  required>
+                  <div class="alert alert-danger" *ngIf="updateUniversite.controls['adresse'].invalid && updateUniversite.controls['adresse'].touched">
+                    this field is required
+                  </div>
+                  <div *ngIf="updateUniversite.controls['adresse'].hasError('required')">
+                    this field is required
+                   </div>
+                 <div *ngIf="updateUniversite.controls['adresse'].hasError('minlength')">
+                    minlength = 3 !
+                 </div>
+                 <div *ngIf="updateUniversite.controls['adresse'].hasError('pattern')">
+                   error pattern
+                </div>
+                </div>
+                <div>
+                  
+                  <label>Description</label>
+                  <input formControlName="description" type="text"
+                  [(ngModel)]="universite.description"
+                  class="form-control" required>
+                  <div class="alert alert-danger" *ngIf="updateUniversite.controls['description'].invalid && updateUniversite.controls['description'].touched">
+                    this field is required
+                  </div>
+                  <div *ngIf="updateUniversite.controls['description'].hasError('required')">
+                    this field is required
+                   </div>
+                  <div *ngIf="updateUniversite.controls['description'].hasError('minlength')">
+                    minlength = 3 !
+                 </div>
+                 <div *ngIf="updateUniversite.controls['description'].hasError('pattern')">
+                   error pattern
+                </div>
+                </div>
+                
+                <div>
+                  <label>image:* </label>
+                  <br>
+                   <input formControlName="imgUrl" type="text"  class="form-control" [(ngModel)]="universite.imgUrl">
+              
+              
+                <div>
+                </div>
+              </div>
+              </div>
+              </form>
+            </div>
+            <div class="card-footer ">
+              <button (click)="add()"  [disabled]=""mat-raised-button type="submit" class="btn btn-fill btn-rose"> {{action}}</button>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  

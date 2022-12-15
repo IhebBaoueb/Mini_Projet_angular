@@ -1,0 +1,36 @@
+.search_mahdi{    
+    position: relative;
+    display: flex;
+    /* align-content: flex-end; */
+    /* flex-wrap: wrap; */
+    margin-top: -49px;
+    margin-left: 272px;
+    margin-bottom: 50px;
+    /* margin-left: 80%; */
+    /* width: 500px; */
+    z-index: 99999999999999;
+}
+.select_options{
+    width: 200px;
+    text-align: center;
+    align-content: center;
+    margin-left: 40%;
+    margin-bottom: 70px;
+    margin-top: -37px;
+    z-index: 999999999999999;
+}
+
+.add_contrat{
+    margin-left: 100px;
+}
+.legend{
+    text-align: -webkit-center;
+}
+.ig-chart-legend-item{
+    font-size: 40px !important;
+}
+
+canvas{
+    height: 40px;
+    width: 40px;
+}

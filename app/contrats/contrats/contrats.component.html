@@ -1,0 +1,96 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            
+            <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header card-header-icon card-header-rose">
+                    <div class="card-icon">
+                      <i class="material-icons">assignment</i>
+                    </div>
+                    <h4 class="card-title ">Table Contrat</h4>
+                  </div>
+                  <!-- //search -->
+                  
+                    <div class="card-body">
+                  <div class="input-group search_mahdi">
+                    <input type="text" [(ngModel)]="search_id" (ngModelChange)="search_table()" value="" class="form-control" style="width:40%;flex:none;" placeholder="Search contrat by id...">           
+                  </div>
+                        <div class="table-respondsive">
+                          <table class="table">
+                                  <thead class="text-primary">
+                                      <tr>
+                                        <!-- <th *ngFor="let header of contrats_header">{{ header }}</th> -->
+                                        <th>Id Contrat</th>
+                                        <th > <button style="border:none; background:transparent;color: #9c27b0 !important;font-weight: 100;" (click)="sortdd()">Date debut <i [ngClass]="{'fa-sort' : sortDateDebut==0,'fa-sort-down':sortDateDebut==1,'fa-sort-up':sortDateDebut==2}" class="fas"></i></button></th>
+                                        <th><button style="border:none; background:transparent;color: #9c27b0 !important;font-weight: 100;" (click)="sortdf()">Date fin <i [ngClass]="{'fa-sort' : sortDateFin==0,'fa-sort-down':sortDateFin==1,'fa-sort-up':sortDateFin==2}" class="fas"></i></button></th>
+                                        <th>Specialité</th>
+                                        <th>Archive</th>
+                                        <th>Etudiant</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                      </tr>
+                                  </thead>
+                                <tbody>
+                                  
+                                    <tr *ngFor="let row of contrats_filter" >
+                                      <td>{{row.idContrat}}</td>
+                                      <td >{{row.dateDebutContrat}}</td>
+                                      <td>{{row.dateFinContrat}}</td>
+                                      <td>{{row.specialite}}</td>
+                                      <td>{{row.archive}}</td>
+                                      <td>{{row.etudiant.idEtudiant}}</td>
+                                      <td>{{row.description}}</td>
+                                      <td><app-rows [row]="row" (delete_contrat)="delete_th_contrat($event)" ></app-rows></td>
+                                    </tr>
+                                </tbody>
+                          </table>
+                           <button style="margin-left: 80%;" class="mat-focus-indicator btn btn-success mat-raised-button mat-button-base add_contrat" routerLink="/contrat/addContrat" >add Contrat</button>
+                                <div class="d-flex ">
+                                  <button class="btn btn-warning" [disabled]="page_number<=1" (click)="GoPrev()" >prev</button>
+                                  <p style="margin-top: 12px; margin-left:10px;margin-right:10px">page:<b> {{page_number}}/{{pages_number}}</b></p>
+                                  <label style="margin-top: 15px "> Rows-number:</label>
+                                  <input  style="height:30px;margin-top: 10px;margin-right:10px"  [(ngModel)]="table_row_number" [value]="table_row_number" type="number" min="1" max="{{data_length}}" (ngModelChange)="updateAll()">
+                                  <button class="btn btn-warning" [disabled]="page_number>=pages_number" (click)="GoNext()">next</button>
+                              </div>
+                              <div class="container vertical sample" style="margin-top: 50px;">
+                                <div class="legend-title" style="text-align: center;">
+                                    <h1>Chart for options</h1>
+                                </div>
+                                <div class="legend">
+                                    <igx-item-legend
+                                    orientation="Horizontal"
+                                    name="Legend"
+                                    #legend>
+                                    </igx-item-legend>
+                                </div>
+                                <div class="container fill">
+                                    <igx-doughnut-chart
+                                    style="height:1000px;margin-top: -150px;" 
+                                    allowSliceExplosion="true"
+                                    name="chart"
+                                    #chart>
+                                        <igx-ring-series
+                                        [dataSource]="OptionChart"
+                                        valueMemberPath="value"
+                                        labelMemberPath="summary"
+                                        legendLabelMemberPath="category"
+                                        labelsPosition="OutsideEnd"
+                                        [legend]="legend"
+                                        labelExtent="30"
+                                        startAngle="30"
+                                        outlines="white"
+                                        radiusFactor="0.6"
+                                        name="series"
+                                        #series>
+                                        </igx-ring-series>
+                                    </igx-doughnut-chart>
+                                </div>
+                        </div> 
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

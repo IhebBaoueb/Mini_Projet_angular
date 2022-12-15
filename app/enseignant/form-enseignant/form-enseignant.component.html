@@ -1,0 +1,97 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <form #f="ngForm">
+            <div class="form-group col-md-6">
+                <label>Nom</label>
+                <input type="text" name="nomEnseignant" class="form-control" [(ngModel)]="enseignant.nomEnseignant"
+                    #nom="ngModel" required pattern="[A-Za-z]*" minlength="4">
+                <div class="alert alert-danger" *ngIf="nom.invalid && nom.touched">
+                    <div *ngIf="nom.hasError('required')">Ce Champ est obligatoire</div>
+                    <div *ngIf="nom.hasError('pattern')">Erreur pattern</div>
+                    <div *ngIf="nom.hasError('minlength')">La taille Min est 4</div>
+                </div>
+
+            </div>
+
+            <div class="form-group col-md-6">
+                <label>Prenom</label>
+                <input type="text" name="prenomEnseignant" class="form-control"
+                    [(ngModel)]="enseignant.prenomEnseignant" #prenom="ngModel" required pattern="[A-Za-z]*">
+                <div class="alert alert-danger" *ngIf="prenom.invalid && prenom.touched">
+                    <div *ngIf="prenom.hasError('required')">Ce Champ est obligatoire</div>
+                    <div *ngIf="prenom.hasError('pattern')">Erreur pattern</div>
+                </div>
+
+            </div>
+            <div class="form-group col-md-6">
+                <label>Grade</label>
+                <select name="grade" class="form-control" [(ngModel)]="enseignant.grade" #grade="ngModel" required>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="grade.invalid && grade.touched">
+                    <div *ngIf="grade.hasError('required')">Ce Champ est obligatoire</div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Matière</label>
+                <select name="matiere" class="form-control" [(ngModel)]="enseignant.matiere" #matiere="ngModel"
+                    required>
+                    <option value="SPRING">SPRING</option>
+                    <option value="ANGULAR">ANGULAR</option>
+                    <option value="SQL">SQL</option>
+                    <option value="DATAMINING">DATAMINING</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="matiere.invalid && matiere.touched">
+                    <div *ngIf="matiere.hasError('required')">Ce Champ est obligatoire</div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Salaire</label>
+                <input type="number" name="salaire" class="form-control" [(ngModel)]="enseignant.salaire" #sa="ngModel"
+                    required>
+                <div class="alert alert-danger" *ngIf="sa.value<0">
+                    Valeur negatif !!!
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-8">
+                    <label class="btn btn-default p-0">
+                        <input type="file" (change)="selectFile($event)" />
+                    </label>
+                </div>
+        
+                <div class="col-4">
+                    <button class="btn btn-success btn-sm" [disabled]="!selectedFiles || f.invalid" (click)="saveEnseignant()">
+                        Save
+                    </button>
+                </div>
+            </div>
+            <!-- <button class="btn btn-success" (click)="saveEnseignant()" [disabled]="f.invalid">
+                save
+            </button> -->
+        </form>
+    </div>
+   
+</div>
+
+<div *ngIf="currentFile" class="progress my-3">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+        attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: progress + '%' }">
+        {{ progress }}%
+    </div>
+</div>
+
+<div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+
+<div class="card mt-3">
+    <div class="card-header">List of Files</div>
+    <ul class="list-group list-group-flush" *ngFor="let file of fileInfos | async">
+        <li class="list-group-item">
+            <a href="{{ file.url }}">{{ file.name }}</a>
+        </li>
+    </ul>
+</div>

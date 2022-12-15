@@ -1,0 +1,60 @@
+
+.form_add_update{
+    margin-top:7rem;
+}
+
+.main-panel .navbar {
+    margin-top: -100px !important;
+}
+
+.card-body{
+    margin-top: 100px;
+}
+.card .card-body .col-form-label{
+    padding: 10px !important;
+    padding-bottom: 15px;
+}
+
+.tazyin_class{
+    width: 350px;
+    margin-top: 5px;
+    padding: 2px;
+    padding-left: 20px;
+}
+.checkbox_archive{
+    margin-top: 13px;
+}
+.add_contrat{
+    margin-left: 60% !important;
+}
+
+.list-group {
+    background-color: white;
+    display: none;
+    list-style-type: none;
+    margin: 0 0 0 0px;
+    padding: 0;
+    position: absolute;
+    width: 350px;
+    z-index: 500;
+}
+
+.list-group > li {
+    border-color: gray;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px 0;
+    padding-left: 5px;
+}
+
+
+.list-group > li:last-child {
+    border-bottom: 1px solid gray;
+  }
+
+.form-control:focus + .list-group {
+  display: block; 
+}
+.form-control{
+    width: 350px;
+}

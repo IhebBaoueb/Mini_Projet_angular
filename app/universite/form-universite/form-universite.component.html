@@ -1,0 +1,105 @@
+<h1>{{action}}Universite</h1>
+<br>
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card ">
+            <div class="card-header card-header-rose card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">mail_outline</i>
+              </div>
+              <h4 class="card-title">Stacked Form</h4>
+            </div>
+            <div class="card-body ">
+              <form #f="ngForm">
+                <div>
+                  <label>Name:* </label>
+                   <input type="text" name="nomUni" [(ngModel)]="universite.nomUniv"
+                   class="form-control" required minlength="3"
+                   pattern="[A-Za-z]{3,12}$" #n="ngModel">
+                   <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
+                    <div *ngIf="n.hasError('required')">
+                       this field is required
+                      </div>
+                    <div *ngIf="n.hasError('minlength')">
+                       minlength = 3 !
+                    </div>
+                    <div *ngIf="n.hasError('pattern')">
+                      error pattern
+                   </div>
+                </div>
+                <div>
+                  <label>Region:* </label>
+                   <input type="text" name="region" [(ngModel)]="universite.region"
+                   class="form-control" required minlength="3"
+                   pattern="[A-Za-z]{3,12}$" #n="ngModel">
+                   <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
+                    <div *ngIf="n.hasError('required')">
+                       this field is required
+                      </div>
+                    <div *ngIf="n.hasError('minlength')">
+                       minlength = 3 !
+                    </div>
+                    <div *ngIf="n.hasError('pattern')">
+                      error pattern
+                   </div>
+                </div>
+
+           
+                  <label>Adresse:*</label>
+                  <input type="text" name="adresse"
+                  [(ngModel)]="universite.adresse"class="form-control"
+                  required #p="ngModel">
+                  <div class="alert alert-danger" *ngIf="p.invalid && p.touched">
+                    this field is required
+                  </div>
+                  <div *ngIf="n.hasError('required')">
+                    this field is required
+                   </div>
+                 <div *ngIf="p.hasError('minlength')">
+                    minlength = 3 !
+                 </div>
+                 <div *ngIf="p.hasError('pattern')">
+                   error pattern
+                </div>
+                </div>
+                <div>
+                  
+                  <label>Description</label>
+                  <input type="text" name="description"
+                  [(ngModel)]="universite.description"
+                  class="form-control" required #qt="ngModel">
+                  <div class="alert alert-danger" *ngIf="qt.invalid && qt.touched">
+                    this field is required
+                  </div>
+                  <div *ngIf="qt.hasError('minlength')">
+                    minlength = 3 !
+                 </div>
+                 <div *ngIf="qt.hasError('pattern')">
+                   error pattern
+                </div>
+                </div>
+                
+                <div>
+                  <label>image:* </label>
+                  <br>
+                   <input type="text"  class="form-control" name="imgUrl" [(ngModel)]="universite.imgUrl">
+              
+              
+                <div>
+                </div>
+              </div>
+              </div>
+              </form>
+            </div>
+            <div class="card-footer ">
+              <button (click)="add()"  [disabled]="f.invalid"mat-raised-button type="submit" class="btn btn-fill btn-rose"> {{action}}</button>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  

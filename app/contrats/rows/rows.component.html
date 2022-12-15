@@ -1,0 +1,36 @@
+<!-- <button class="btn-sm btn-warning mr-1"  [routerLink]="['/contrat/update/',row.idContrat]">Edit-{{row.idContrat}}</button> -->
+<!-- <button class="btn-sm btn-danger">Delete</button> -->
+<button mat-raised-button="" type="button" (click)="open_info_popup()" class="mat-focus-indicator mat-raised-button mat-button-base btn btn-info"><span class="mat-button-wrapper"><i class="material-icons">person</i></span><span matripple="" class="mat-ripple mat-button-ripple"></span><span class="mat-button-focus-overlay"></span></button>
+<button mat-raised-button="" type="button"  [routerLink]="['/contrat/update/',row.idContrat]" class="mat-focus-indicator mat-raised-button mat-button-base btn btn-warning"><span class="mat-button-wrapper"><i class="material-icons">edit</i></span><span matripple="" class="mat-ripple mat-button-ripple"></span><span class="mat-button-focus-overlay"></span></button>
+<button mat-raised-button=""  (click)="open_popup()" type="button" class="mat-focus-indicator mat-raised-button mat-button-base btn btn-danger"><span class="mat-button-wrapper"><i class="material-icons">close</i></span><span matripple="" class="mat-ripple mat-button-ripple"></span><span class="mat-button-focus-overlay"></span></button>
+<!-- <app-popups  ></app-popups> -->
+<!-- delete_the_contrat -->
+    <div class="popup" [hidden]="show_delete && show_info">
+    </div>
+    <div class="msg" [hidden]="show_delete">
+        <legend>Delete confirmation</legend>
+        <span style="margin-top:17px;padding-bottom: 15px;"><b>Voulez vous vraiment supprimer contrat avec id: {{row.idContrat}}</b></span>
+        <div class="popButtons">
+            <button class="btn btn-delete" (click)="open_popup()" >Cancel</button>
+            <button class="btn btn-success" (click)="delete_the_contrat()" >Confirmer</button>
+        </div>
+    </div>
+    <div class="msg1" [hidden]="show_info">
+            <div class="container" style="padding: 40px;">
+                <div id="pdfTable" #pdfTable="">
+                <h1 style="color:red;">Contrat</h1>
+                <h2> <span style="color:rgb(119, 0, 255);">Id Contrat: </span> {{row.idContrat}}</h2>
+                <h2><span style="color:rgb(119, 0, 255);">Date debut: </span> {{row.dateDebutContrat}} </h2>
+                <h2><span style="color:rgb(119, 0, 255);">Date fin: </span> {{row.dateFinContrat}} </h2>
+                <h2><span style="color:rgb(119, 0, 255);">Specialite: </span> {{row.specialite}} </h2>
+                <h2><span style="color:rgb(119, 0, 255);">Description: </span> {{row.description}} </h2>
+                <h1 style="color:red;">Etudiant</h1>
+                <h2><span style="color:rgb(119, 0, 255);">Id etudiant: </span> {{row.etudiant.idEtudiant}} </h2>
+                <h2><span style="color:rgb(119, 0, 255);">Nom: </span> {{row.etudiant.nomE}} </h2>
+                <h2><span style="color:rgb(119, 0, 255);">Prenom: </span> {{row.etudiant.prenomE}} </h2>
+                <h2><span style="color:rgb(119, 0, 255);">Option: </span> {{row.etudiant.opt}} </h2>
+                </div>
+        <br><button class="btn btn-delete" style="padding: 20px !important;" (click)="open_info_popup()" >Close</button>
+        <button class="btn btn-success" style="padding: 20px !important;" (click)="exportPDF()" > Imrimer en pdf</button>
+            </div>
+    </div>

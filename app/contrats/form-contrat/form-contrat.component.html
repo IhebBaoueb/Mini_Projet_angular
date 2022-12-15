@@ -1,0 +1,80 @@
+      <div class="col-md-12 form_add_update">
+        <div class="card ">
+          <div class="card-header card-header-rose card-header-text">
+            <div class="card-text">
+              <h4 class="card-title">Add Contrat</h4>
+            </div>
+          </div>
+          <div class="card-body ">
+            <form #f="ngForm" class="form-horizontal" >
+              <div class="row">
+                <label class="col-sm-2 col-form-label mb-2" >Select etudiant: </label>
+                <div class="col-sm-10">
+                    <!-- <input type="text" [ngStyle]="etudiants_filtred.length==1 ? {'border': '3px solid green'}:{'border': 'none'}" #i="ngModel" required minlength="1" class="form-control" [(ngModel)]="contrat.etudiant.idEtudiant"  (ngModelChange)="update_available()" placeholder="Search etudiant by  id"  />
+                    <u class="list-group">
+                      <li  *ngFor="let etd of etudiants_filtred" >Id: {{etd.idEtudiant}} | {{etd.nomE}} {{etd.prenomE}}</li>
+                    </u> -->
+                    <select #ii="ngModel" name="" [(ngModel)]="contrat.etudiant.idEtudiant" class="form-control"   (ngModelChange)="update_available()" >
+                      <option *ngFor="let etd of etudiants" [value]="etd.idEtudiant">{{etd.nomE}} {{etd.prenomE}}</option>
+                    </select>
+                    <div class="alert alert-danger tazyin_class" *ngIf="ii.invalid && ii.touched">
+                        Il faut selectionner un etudiant
+                      </div> 
+                      <div class="alert alert-danger tazyin_class" *ngIf="etudiants_filtred.length!=1 && ii.touched">
+                          Il faut selectionner un etudiant valid
+                        </div> 
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-sm-2 col-form-label" >Date debut: </label>
+                <div class="col-sm-10">
+                    <input class="tazyin_class" #dd="ngModel"  type="date" [(ngModel)]="contrat.dateDebutContrat" min="{{date | date:'yyyy-MM-dd'}}">
+                    <div class="alert alert-danger tazyin_class" *ngIf="dd.invalid && dd.touched ">
+                        Il faut selectionner date debut
+                      </div> 
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-sm-2 col-form-label">Date fin: </label>
+                <div class="col-sm-10">
+                    <input class="tazyin_class" #df="ngModel" [(ngModel)]="contrat.dateFinContrat"  type="date" min="{{date | date:'yyyy-MM-dd'}}">
+                    <div class="alert alert-danger tazyin_class" *ngIf="contrat.dateFinContrat<contrat.dateDebutContrat ">
+                      date fin ne peux pas etre inferieur a date debut
+                      </div> 
+                      <div class="alert alert-danger tazyin_class" *ngIf="df.invalid && df.touched ">
+                        Il faut selectionner date fin
+                      </div> 
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-sm-2 col-form-label">Archivé: </label>
+                <div class="col-sm-10">
+                    <input  class="tazyin_class" [(ngModel)]="contrat.archive"  class="checkbox_archive" type="checkbox">
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-sm-2 col-form-label" >Specialité: </label>
+                <div class="col-sm-10">
+                    <select  class="tazyin_class" #sp="ngModel" [(ngModel)]="contrat.specialite" required   name="specialite_select" id="">
+                        <option *ngFor="let id of specialite_nom" [ngValue]="id">{{id}}</option>
+                    </select>
+                    <div class="alert alert-danger tazyin_class" *ngIf="sp.invalid && sp.touched">
+                        Il faut selectionner une specialite
+                      </div> 
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-sm-2 col-form-label">Description: </label>
+                <div class="col-sm-10">
+                    <textarea name="description" [(ngModel)]="contrat.description" minlength="3" required #d="ngModel" class="tazyin_class" id="" cols="30" rows="10"></textarea>
+                    <div class="alert alert-danger tazyin_class" *ngIf="d.invalid  && d.touched">
+                          <div *ngIf="d.hasError('required')">this field is required</div>
+                          <div *ngIf="d.hasError('minlength')">minlength = 3!</div>
+                      </div> 
+                </div>
+              </div>
+              <button class="mat-focus-indicator btn btn-success mat-raised-button mat-button-base add_contrat" [disabled]="f.invalid || etudiants_filtred.length!=1 " [ngStyle]="f.invalid || etudiants_filtred.length!=1  ? {'background-color': 'red'}:{'background-color': 'green'}" (click)="save_modify_contrat()">add Contrat</button>
+            </form>
+          </div>
+        </div>
+      </div>
